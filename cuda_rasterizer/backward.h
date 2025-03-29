@@ -74,6 +74,7 @@ namespace BACKWARD
 		const float* cov3Ds,
 		const float* view,
 		const float* proj,
+        const float* proj_raw,
 		const float focal_x, float focal_y,
 		const float tan_fovx, float tan_fovy,
 		const float kernel_size,
@@ -92,7 +93,8 @@ namespace BACKWARD
 		glm::vec3* dL_dscale,
 		glm::vec4* dL_drot,
 		const float4* conic_opacity,
-		float* dL_dopacity);
+		float* dL_dopacity,
+        float* dL_dtau);
 }
 
 #endif

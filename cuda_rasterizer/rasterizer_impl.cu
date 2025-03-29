@@ -440,6 +440,7 @@ void CudaRasterizer::Rasterizer::backward(
 	const float* cov3D_precomp,
 	const float* viewmatrix,
 	const float* projmatrix,
+    const float* projmatrix_raw,
 	const float* campos,
 	const float tan_fovx, float tan_fovy,
 	const float kernel_size,
@@ -469,6 +470,7 @@ void CudaRasterizer::Rasterizer::backward(
 	float* dL_dsh,
 	float* dL_dscale,
 	float* dL_drot,
+	float* dL_dtau,
 	bool require_coord,
 	bool require_depth,
 	bool debug)
@@ -549,6 +551,7 @@ void CudaRasterizer::Rasterizer::backward(
 		cov3D_ptr,
 		viewmatrix,
 		projmatrix,
+        projmatrix_raw,
 		focal_x, focal_y,
 		tan_fovx, tan_fovy,
 		kernel_size,
@@ -567,7 +570,8 @@ void CudaRasterizer::Rasterizer::backward(
 		(glm::vec3*)dL_dscale,
 		(glm::vec4*)dL_drot,
 		(float4*)dL_dconic,
-		dL_dopacity), debug)
+		dL_dopacity,
+        dL_dtau), debug)
 }
 
 int CudaRasterizer::Rasterizer::integrate(

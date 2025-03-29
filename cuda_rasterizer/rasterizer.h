@@ -76,6 +76,7 @@ namespace CudaRasterizer
 			const float* cov3D_precomp,
 			const float* viewmatrix,
 			const float* projmatrix,
+            const float* projmatrix_raw,
 			const float* campos,
 			const float tan_fovx, float tan_fovy,
 			const float kernel_size,
@@ -105,6 +106,7 @@ namespace CudaRasterizer
 			float* dL_dsh,
 			float* dL_dscale,
 			float* dL_drot,
+            float* dL_dtau,
 			bool require_coord = true,
 			bool require_depth = true,
 			bool debug = false);
